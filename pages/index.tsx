@@ -16,7 +16,7 @@ export function getServerSideProps() {
   };
 }
 
-function Home({ signOut, user, renderedAt }) {
+function Home({ signOut, user, renderedAt }:any) {
   return (
     <div style={{ padding: 50 }}>
       <App></App>
