@@ -1,6 +1,6 @@
 {
-  "resourceName": "movieFinderDb",
-  "tableName": "movieFinderDb",
+  "resourceName": "movieTable",
+  "tableName": "movieTable",
   "partitionKey": {
     "fieldName": "id",
     "fieldType": "string"
@@ -13,14 +13,16 @@
     {
       "name": "GSI1",
       "partitionKey": {
-        "fieldName": "id",
+        "fieldName": "GSI1",
         "fieldType": "string"
       },
       "sortKey": {
-        "fieldName": "sk",
+        "fieldName": "id",
         "fieldType": "string"
       }
     }
   ],
-  "triggerFunctions": []
+  "triggerFunctions": [
+    "movieTableTrigger360f4932"
+  ]
 }

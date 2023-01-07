@@ -2,27 +2,26 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.6.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
-    "CloudWatchRule": {
+    "env": {
+      "Type": "String"
+    },
+    "storagemovieTableName": {
       "Type": "String",
-      "Default": "NONE",
-      "Description": " Schedule Expression"
+      "Default": "storagemovieTableName"
+    },
+    "storagemovieTableArn": {
+      "Type": "String",
+      "Default": "storagemovieTableArn"
+    },
+    "storagemovieTableStreamArn": {
+      "Type": "String",
+      "Default": "storagemovieTableArn"
     },
     "deploymentBucketName": {
       "Type": "String"
     },
-    "env": {
-      "Type": "String"
-    },
     "s3Key": {
       "Type": "String"
-    },
-    "storagemovieFinderDbName": {
-      "Type": "String",
-      "Default": "storagemovieFinderDbName"
-    },
-    "storagemovieFinderDbArn": {
-      "Type": "String",
-      "Default": "storagemovieFinderDbArn"
     }
   },
   "Conditions": {
@@ -43,24 +42,16 @@
         "aws:asset:property": "Code"
       },
       "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
-        },
         "Handler": "index.handler",
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "moviefinder450917e5",
+            "movieTableTrigger360f4932",
             {
               "Fn::Join": [
                 "",
                 [
-                  "moviefinder450917e5",
+                  "movieTableTrigger360f4932",
                   "-",
                   {
                     "Ref": "env"
@@ -74,9 +65,6 @@
           "Variables": {
             "ENV": {
               "Ref": "env"
-            },
-            "REGION": {
-              "Ref": "AWS::Region"
             }
           }
         },
@@ -87,8 +75,15 @@
           ]
         },
         "Runtime": "nodejs14.x",
-        "Layers": [],
-        "Timeout": 25
+        "Timeout": 25,
+        "Code": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
+        }
       }
     },
     "LambdaExecutionRole": {
@@ -97,12 +92,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "moviefinderLambdaRole815e90d9",
+            "movieTableLambdaRole360f4932",
             {
               "Fn::Join": [
                 "",
                 [
-                  "moviefinderLambdaRole815e90d9",
+                  "movieTableLambdaRole360f4932",
                   "-",
                   {
                     "Ref": "env"
@@ -168,37 +163,62 @@
                   }
                 ]
               }
-            },
+            }
+          ]
+        }
+      }
+    },
+    "movieTableTriggerPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "lambda-trigger-policy-movieTable",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
             {
               "Effect": "Allow",
               "Action": [
-                "dynamodb:DescribeTable",
-                "dynamodb:GetItem",
-                "dynamodb:Query",
-                "dynamodb:Scan",
-                "dynamodb:PutItem",
-                "dynamodb:UpdateItem",
-                "dynamodb:DeleteItem"
+                "dynamodb:DescribeStream",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:ListStreams"
               ],
               "Resource": [
                 {
-                  "Ref": "storagemovieFinderDbArn"
-                },
-                {
-                  "Fn::Join": [
-                    "/",
-                    [
-                      {
-                        "Ref": "storagemovieFinderDbArn"
-                      },
-                      "index/*"
-                    ]
-                  ]
+                  "Ref": "storagemovieTableStreamArn"
                 }
               ]
             }
           ]
         }
+      }
+    },
+    "movieTableTrigger": {
+      "Type": "AWS::Lambda::EventSourceMapping",
+      "DependsOn": [
+        "movieTableTriggerPolicy"
+      ],
+      "Properties": {
+        "BatchSize": 100,
+        "Enabled": true,
+        "EventSourceArn": {
+          "Ref": "storagemovieTableStreamArn"
+        },
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LambdaFunction",
+            "Arn"
+          ]
+        },
+        "StartingPosition": "LATEST"
       }
     }
   },
@@ -224,6 +244,14 @@
     "LambdaExecutionRole": {
       "Value": {
         "Ref": "LambdaExecutionRole"
+      }
+    },
+    "LambdaExecutionRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "LambdaExecutionRole",
+          "Arn"
+        ]
       }
     }
   }

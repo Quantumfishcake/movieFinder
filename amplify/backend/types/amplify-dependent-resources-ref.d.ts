@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "getData": {
+    "getMovieData": {
       "ApiId": "string",
       "ApiName": "string",
       "RootUrl": "string"
@@ -18,13 +18,14 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
-    "moviefinder450917e5": {
+    "getMovieFunction": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
       "Name": "string",
       "Region": "string"
     },
-    "userGet": {
+    "movieTableTrigger360f4932": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -33,15 +34,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
-    "movieFinder": {
-      "Arn": "string",
-      "Name": "string",
-      "PartitionKeyName": "string",
-      "PartitionKeyType": "string",
-      "Region": "string",
-      "StreamArn": "string"
-    },
-    "movieFinderDb": {
+    "movieTable": {
       "Arn": "string",
       "Name": "string",
       "PartitionKeyName": "string",

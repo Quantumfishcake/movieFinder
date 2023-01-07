@@ -16,13 +16,13 @@
     "s3Key": {
       "Type": "String"
     },
-    "storagemovieDBName": {
+    "storagemovieTableName": {
       "Type": "String",
-      "Default": "storagemovieDBName"
+      "Default": "storagemovieTableName"
     },
-    "storagemovieDBArn": {
+    "storagemovieTableArn": {
       "Type": "String",
-      "Default": "storagemovieDBArn"
+      "Default": "storagemovieTableArn"
     }
   },
   "Conditions": {
@@ -55,12 +55,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "userGet",
+            "getMovieFunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "userGet",
+                  "getMovieFunction",
                   "-",
                   {
                     "Ref": "env"
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "moviefinderLambdaRoleb7bac6c1",
+            "moviefinderLambdaRole60c9621b",
             {
               "Fn::Join": [
                 "",
                 [
-                  "moviefinderLambdaRoleb7bac6c1",
+                  "moviefinderLambdaRole60c9621b",
                   "-",
                   {
                     "Ref": "env"
@@ -182,14 +182,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storagemovieDBArn"
+                  "Ref": "storagemovieTableArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storagemovieDBArn"
+                        "Ref": "storagemovieTableArn"
                       },
                       "index/*"
                     ]
