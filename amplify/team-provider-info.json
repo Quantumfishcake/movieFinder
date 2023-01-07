@@ -1,0 +1,58 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-moviefinder-dev-101629-authRole",
+      "UnauthRoleArn": "arn:aws:iam::892068360703:role/amplify-moviefinder-dev-101629-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::892068360703:role/amplify-moviefinder-dev-101629-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-moviefinder-dev-101629-deployment",
+      "UnauthRoleName": "amplify-moviefinder-dev-101629-unauthRole",
+      "StackName": "amplify-moviefinder-dev-101629",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:892068360703:stack/amplify-moviefinder-dev-101629/fd8a53e0-8d4e-11ed-b055-02faf914c012",
+      "AmplifyAppId": "d3nb1612bgnafs"
+    },
+    "categories": {
+      "function": {
+        "getUserData": {
+          "deploymentBucketName": "amplify-moviefinder-dev-101629-deployment",
+          "s3Key": "amplify-builds/getUserData-424c70754a6764357073-build.zip"
+        },
+        "movieFinderTriggerc7bda7cc": {
+          "deploymentBucketName": "amplify-moviefinder-dev-101629-deployment",
+          "s3Key": "amplify-builds/movieFinderTriggerc7bda7cc-76747151794974634872-build.zip"
+        },
+        "moviefinder078d0b31": {
+          "deploymentBucketName": "amplify-moviefinder-dev-101629-deployment",
+          "s3Key": "amplify-builds/moviefinder078d0b31-77584873383373545639-build.zip"
+        },
+        "userGet": {
+          "deploymentBucketName": "amplify-moviefinder-dev-101629-deployment",
+          "s3Key": "amplify-builds/userGet-3777306d7634787a6d57-build.zip"
+        },
+        "moviefinder450917e5": {
+          "deploymentBucketName": "amplify-moviefinder-dev-101629-deployment",
+          "s3Key": "amplify-builds/moviefinder450917e5-4769695761476634486d-build.zip"
+        }
+      },
+      "storage": {
+        "movieFinder": {},
+        "movieDB": {
+          "tableName": "movieDB",
+          "region": "ap-southeast-1",
+          "arn": "arn:aws:dynamodb:ap-southeast-1:892068360703:table/movieDB",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "sortKeyName": "sk",
+          "sortKeyType": "S"
+        },
+        "movieFinderDb": {}
+      },
+      "api": {
+        "getData": {}
+      },
+      "auth": {
+        "moviefinder2d593e0a": {}
+      }
+    }
+  }
+}

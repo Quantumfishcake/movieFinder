@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/users": {
+      "name": "/users",
+      "lambdaFunction": "moviefinder450917e5",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

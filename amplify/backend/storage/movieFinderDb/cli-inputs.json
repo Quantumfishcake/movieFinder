@@ -1,0 +1,26 @@
+{
+  "resourceName": "movieFinderDb",
+  "tableName": "movieFinderDb",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "sk",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "GSI1",
+      "partitionKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "sk",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}

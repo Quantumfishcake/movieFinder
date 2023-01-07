@@ -1,0 +1,292 @@
+{
+  "api": {
+    "getData": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "moviefinder450917e5"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "moviefinder2d593e0a": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "getUserData": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "movieFinder"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "movieFinderTriggerc7bda7cc": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "movieFinder"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "moviefinder078d0b31": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "movieDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "moviefinder450917e5": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "movieFinderDb"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "userGet": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "movieDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_getUserData_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getUserData"
+        }
+      ]
+    },
+    "AMPLIFY_function_getUserData_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getUserData"
+        }
+      ]
+    },
+    "AMPLIFY_function_movieFinderTriggerc7bda7cc_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "movieFinderTriggerc7bda7cc"
+        }
+      ]
+    },
+    "AMPLIFY_function_movieFinderTriggerc7bda7cc_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "movieFinderTriggerc7bda7cc"
+        }
+      ]
+    },
+    "AMPLIFY_function_moviefinder078d0b31_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "moviefinder078d0b31"
+        }
+      ]
+    },
+    "AMPLIFY_function_moviefinder078d0b31_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "moviefinder078d0b31"
+        }
+      ]
+    },
+    "AMPLIFY_function_moviefinder450917e5_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "moviefinder450917e5"
+        }
+      ]
+    },
+    "AMPLIFY_function_moviefinder450917e5_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "moviefinder450917e5"
+        }
+      ]
+    },
+    "AMPLIFY_function_userGet_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "userGet"
+        }
+      ]
+    },
+    "AMPLIFY_function_userGet_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "userGet"
+        }
+      ]
+    },
+    "AMPLIFY_storage_movieDB_arn": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "movieDB"
+        }
+      ]
+    },
+    "AMPLIFY_storage_movieDB_partitionKeyName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "movieDB"
+        }
+      ]
+    },
+    "AMPLIFY_storage_movieDB_partitionKeyType": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "movieDB"
+        }
+      ]
+    },
+    "AMPLIFY_storage_movieDB_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "movieDB"
+        }
+      ]
+    },
+    "AMPLIFY_storage_movieDB_sortKeyName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "movieDB"
+        }
+      ]
+    },
+    "AMPLIFY_storage_movieDB_sortKeyType": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "movieDB"
+        }
+      ]
+    },
+    "AMPLIFY_storage_movieDB_tableName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "movieDB"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "movieDB": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB",
+      "serviceType": "imported"
+    },
+    "movieFinder": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "movieFinderDb": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}
