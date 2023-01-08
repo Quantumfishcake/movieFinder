@@ -42,6 +42,7 @@ const App = () => {
     const APIKEY = "3aa9de6998765e0677b43353d0ea652f"
     const path = "https://api.themoviedb.org/3/discover/movie?api_key=3aa9de6998765e0677b43353d0ea652f&language=en-US&sort_by=popularity.desc"
     const params = {
+      "with_keywords": title,
       "with_genres": genre,
       "release_date.gte": yearMin,
       "release_date.lte": yearMax,
