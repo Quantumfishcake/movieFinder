@@ -1,5 +1,6 @@
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import App from "./main"
+import NavBar from "./components/navBar";
 
 // export function getServerSideProps() {
 //   const renderedAt = new Date();
@@ -17,9 +18,11 @@ import App from "./main"
 // }
 
 function Home({ signOut, user, renderedAt }:any) {
+  const auth = {signOut, user}
   return (
     <div style={{ padding: 50 }}>
-      <App></App>
+      <NavBar auth={auth}></NavBar>
+      <App user={user}></App>
     </div>
   );
 }

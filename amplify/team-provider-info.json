@@ -23,7 +23,8 @@
         "movieTableTrigger360f4932": {
           "deploymentBucketName": "amplify-moviefinder-dev-101629-deployment",
           "s3Key": "amplify-builds/movieTableTrigger360f4932-6c566154476578307653-build.zip"
-        }
+        },
+        "getMovies": {}
       },
       "storage": {
         "movieTable": {
