@@ -16,7 +16,7 @@ import { Amplify } from "aws-amplify";
 import awsExports from "../src/aws-exports";
 import type { AppProps } from 'next/app'
 
-import NavBar from "./components/navBar";
+import NavBar from "../components/navBar";
 
 import { withAuthenticator } from "@aws-amplify/ui-react";
 

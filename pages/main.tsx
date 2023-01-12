@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react"
 
-import MovieCard from './components/movieCard'
-import SmallMovieCard from './components/smallMovieCard'
-import InputQuery from './components/input'
+import MovieCard from '../components/movieCard'
+import SmallMovieCard from '../components/smallMovieCard'
+import InputQuery from '../components/input'
 
-import { retrieveFavourites, addToFavourites, addMovie, deleteMovie } from './components/apis'
+import { retrieveFavourites, addToFavourites, addMovie, deleteMovie } from '../components/apis'
 
 import axios from "axios"
 import bg3 from '../public/bg3.webp'
-import { Movie } from "./types/mainTypes"
+import { Movie } from "../types/mainTypes"
 
-import GenrePicker from './components/genrePicker'
+import GenrePicker from '../components/genrePicker'
 interface User {
     user: {
         username: string;

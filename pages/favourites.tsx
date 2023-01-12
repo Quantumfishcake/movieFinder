@@ -1,10 +1,10 @@
 
 import { useEffect, useState } from "react"
 
-import {getMoviesByIds, retrieveFavourites, deleteMovie} from './components/apis'
-import MovieCard from './components/movieCard'
+import {getMoviesByIds, retrieveFavourites, deleteMovie} from '../components/apis'
+import MovieCard from '../components/movieCard'
 
-import { UserTypes, Movie } from "./types/mainTypes"
+import { UserTypes, Movie } from "../types/mainTypes"
 
 interface FavouriteMovieIds {
     id: String,

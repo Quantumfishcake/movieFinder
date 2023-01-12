@@ -1,6 +1,6 @@
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import App from "./main"
-import NavBar from "./components/navBar";
+import NavBar from "../components/navBar";
 
 // export function getServerSideProps() {
 //   const renderedAt = new Date();
