@@ -12,28 +12,21 @@
       "AmplifyAppId": "d3nb1612bgnafs"
     },
     "categories": {
+      "function": {
+        "getMovies": {},
+        "movieAPIFunction": {
+          "deploymentBucketName": "amplify-moviefinder-dev-101629-deployment",
+          "s3Key": "amplify-builds/movieAPIFunction-725172692f7755534833-build.zip"
+        }
+      },
+      "storage": {
+        "movieTable": {}
+      },
       "auth": {
         "moviefinder2d593e0a": {}
       },
-      "function": {
-        "getMovieFunction": {
-          "deploymentBucketName": "amplify-moviefinder-dev-101629-deployment",
-          "s3Key": "amplify-builds/getMovieFunction-745466763661476c7346-build.zip"
-        },
-        "movieTableTrigger360f4932": {
-          "deploymentBucketName": "amplify-moviefinder-dev-101629-deployment",
-          "s3Key": "amplify-builds/movieTableTrigger360f4932-6c566154476578307653-build.zip"
-        },
-        "getMovies": {}
-      },
-      "storage": {
-        "movieTable": {
-          "tableName": "movieTable",
-          "region": "ap-southeast-1"
-        }
-      },
       "api": {
-        "getMovieData": {}
+        "movieData": {}
       }
     }
   }

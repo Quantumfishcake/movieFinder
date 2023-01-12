@@ -1,6 +1,6 @@
 {
   "api": {
-    "getMovieData": {
+    "movieData": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "getMovieFunction"
+          "resourceName": "movieAPIFunction"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -42,7 +42,7 @@
     }
   },
   "function": {
-    "getMovieFunction": {
+    "movieAPIFunction": {
       "build": true,
       "dependsOn": [
         {
@@ -60,70 +60,22 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    },
-    "movieTableTrigger360f4932": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ],
-          "category": "storage",
-          "resourceName": "movieTable"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
     }
   },
   "parameters": {
-    "AMPLIFY_function_getMovieFunction_deploymentBucketName": {
+    "AMPLIFY_function_movieAPIFunction_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "getMovieFunction"
+          "resourceName": "movieAPIFunction"
         }
       ]
     },
-    "AMPLIFY_function_getMovieFunction_s3Key": {
+    "AMPLIFY_function_movieAPIFunction_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "getMovieFunction"
-        }
-      ]
-    },
-    "AMPLIFY_function_movieTableTrigger360f4932_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "movieTableTrigger360f4932"
-        }
-      ]
-    },
-    "AMPLIFY_function_movieTableTrigger360f4932_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "movieTableTrigger360f4932"
-        }
-      ]
-    },
-    "AMPLIFY_storage_movieTable_region": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "movieTable"
-        }
-      ]
-    },
-    "AMPLIFY_storage_movieTable_tableName": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "movieTable"
+          "resourceName": "movieAPIFunction"
         }
       ]
     }

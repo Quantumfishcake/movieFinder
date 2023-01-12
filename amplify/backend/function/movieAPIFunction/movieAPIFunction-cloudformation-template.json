@@ -55,12 +55,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "getMovieFunction",
+            "movieAPIFunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "getMovieFunction",
+                  "movieAPIFunction",
                   "-",
                   {
                     "Ref": "env"
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "moviefinderLambdaRole60c9621b",
+            "moviefinderLambdaRole7c468fe9",
             {
               "Fn::Join": [
                 "",
                 [
-                  "moviefinderLambdaRole60c9621b",
+                  "moviefinderLambdaRole7c468fe9",
                   "-",
                   {
                     "Ref": "env"

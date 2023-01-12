@@ -55,6 +55,36 @@ const convertUrlType = (param, type) => {
   }
 }
 
+
+/********************************
+ * HTTP Get method for multiple  movies *
+ ********************************/
+
+app.post("/movies", function (req, res) {
+  if (userIdPresent) {
+    req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
+  }
+
+  const movieIds = req.body.movieList
+
+  const params = {
+    RequestItems: {
+      "movieTable-dev": {
+        Keys: movieIds
+      },
+    },
+  };
+
+  dynamodb.batchGet(params, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({ error: "Could not load items4455: " + err });
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 /********************************
  * HTTP Get method for list objects *
  ********************************/

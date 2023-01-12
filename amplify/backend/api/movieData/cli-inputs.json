@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/movie": {
+      "name": "/movie",
+      "lambdaFunction": "movieAPIFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/movies": {
+      "name": "/movies",
+      "lambdaFunction": "movieAPIFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

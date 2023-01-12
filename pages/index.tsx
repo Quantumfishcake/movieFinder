@@ -17,14 +17,14 @@ import NavBar from "./components/navBar";
 //   };
 // }
 
-function Home({ signOut, user, renderedAt }:any) {
-  const auth = {signOut, user}
+function Home({ signOut, user, renderedAt }: any) {
+  // const auth = { signOut, user }
   return (
-    <div style={{ padding: 50 }}>
-      <NavBar auth={auth}></NavBar>
+    <div>
+      {/* <NavBar auth={auth}></NavBar> */}
       <App user={user}></App>
     </div>
   );
 }
 
-export default withAuthenticator(Home);
+export default Home;
