@@ -3,7 +3,7 @@ import { Movie } from "../types/mainTypes"
 
 
 interface MovieProps {
-    updateMovieFavouriteStatus: (movie:Movie, addOrDelete:boolean) => void,
+    updateMovieFavouriteStatus: (movie: Movie, addOrDelete: boolean) => void,
     favourited: boolean,
     movie: Movie
 }
@@ -12,7 +12,7 @@ const MovieCard: FunctionComponent<MovieProps> = ({ movie, favourited, updateMov
 
     const image_path = `https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`
     const movie_path = `https://www.themoviedb.org/movie/${movie?.id}`
-    
+
     return (
         <>
             <div className="card w-60 bg-base-100 shadow-xl m-2">
@@ -25,11 +25,13 @@ const MovieCard: FunctionComponent<MovieProps> = ({ movie, favourited, updateMov
                 </figure>
                 <div className="p-2">
                     <h2 className="card-title text-base"><a href={movie_path}>{movie?.title ? movie.title : movie?.name ? movie.name : ""}</a></h2>
-                    <p>{movie?.release_date ? movie.release_date : movie?.first_air_date ? movie.first_air_date : ""}</p>
+                    <p className='text-sm'>{movie?.release_date ? movie.release_date : movie?.first_air_date ? movie.first_air_date : ""}</p>
                     {/* <p>{movie?.overview.substr(0, 100) + "\u2026"}</p> */}
                     <div className="card-actions justify-end">
                         {
-                            favourited ? <button id={"add_" + movie?.id} className="btn btn-primary btn-sm" onClick={() => updateMovieFavouriteStatus(movie, false)}>Remove</button> : updateMovieFavouriteStatus ? <button id={"add_" + movie?.id} className="btn btn-primary btn-sm" onClick={() => updateMovieFavouriteStatus(movie, true)}>Favourite</button> : ""
+                            favourited ?
+                                <button id={"add_" + movie?.id} className="btn btn-primary btn-sm" onClick={() => updateMovieFavouriteStatus(movie, false)}>Remove</button>
+                                : <button id={"add_" + movie?.id} className="btn btn-primary btn-sm btn-outline" onClick={() => updateMovieFavouriteStatus(movie, true)}>Favourite</button>
                         }
 
                     </div>

@@ -16,8 +16,9 @@ const Movies = ({user}:UserTypes) => {
     const [movieData, setMovieData] = useState<Movie[]>([])
 
     const deleteMovieFromFavourites = async (movie: Movie) => {
+        let movieId = movie.id
         deleteMovie(user?.username, movie.id).then(() => {
-            const tempFavouriteData = movieData.filter((movie: any) => movie.id !== movie.id)
+            const tempFavouriteData = movieData.filter((movie: Movie) => movie.id !== movieId)
             setMovieData(tempFavouriteData)
         })
     }
